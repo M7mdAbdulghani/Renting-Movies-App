@@ -1,0 +1,69 @@
+﻿@using Vidly.Models
+@*@model Vidly.Models.Movie*@
+@model Vidly.ViewModels.RandomMovieViewModel
+
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<h2>@(((Movie)ViewData["Movie"]).Name)</h2>*@
+@*<h2>@(((Movie)(ViewBag.Movie)).Name)</h2>*@
+
+@*@{
+            var className = Model.Customers.Count > 3 ? "btn-danger" : null;
+    }
+
+    <h2 class="@className">@Model.Movie.Name</h2>*@
+
+@*
+    This is just a comment
+*@
+
+@*@{
+        var className = Model.Count > 0 ? "red" : null;
+    }
+
+    <h2 style="color: @className">Movies</h2>
+    @if (Model.Count == 0)
+    {
+        <text>No one has rented this movie</text>
+    }
+    else
+    {
+        <ul>
+            @foreach (var movie in Model)
+            {
+                <li>@movie.Name</li>
+            }
+        </ul>
+    }*@
+@*<h2>@(((Movie)ViewData["Movie"]).Name)</h2>*@
+@*<h2>@(((Movie)ViewBag.Movie).Name)</h2>*@
+
+@{ 
+    var className = Model.Customers.Count > 0 ? "color: red" : null;
+}
+
+
+<h2 style="@className">@Model.Movie.Name</h2>
+@if (Model.Customers.Count == 0)
+{
+    <text>No one was rented this movie</text>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+
+
+
+
+
+
