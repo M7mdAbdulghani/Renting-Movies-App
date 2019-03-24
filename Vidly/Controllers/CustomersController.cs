@@ -4,24 +4,32 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using System.Data.Entity;
+
 
 namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
-        public List<Customer> GetCustomers()
+        Models.Database db = new Models.Database();
+
+        protected override void Dispose(bool disposing)
         {
-            var customers = new List<Customer>()
-            {
-                new Customer() { Id = 1, Name = "Mohamed Abdulghani" },
-                new Customer() { Id = 2, Name = "Mohannad Noman" }
-            };
-            return customers;
+            db.Dispose();
         }
+        //public List<Customer> GetCustomers()
+        //{
+        //    var customers = new List<Customer>()
+        //    {
+        //        new Customer() { Id = 1, Name = "Mohamed Abdulghani" },
+        //        new Customer() { Id = 2, Name = "Mohannad Noman" }
+        //    };
+        //    return customers;
+        //}
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = GetCustomers();
+            var customers = db.Customer.Include(Customer => Customer.MembershipType).ToList();
             return View(customers);
         }
         public ActionResult Details(int id)
@@ -41,7 +49,7 @@ namespace Vidly.Controllers
             //var customer = GetCustomers().Where(customerId => customerId.Id == id).SingleOrDefault();
             
             //---------------------- Option 3 ---------------------------------
-            var customer = GetCustomers().SingleOrDefault(customerId => customerId.Id == id);
+            var customer = db.Customer.Include(Customer => Customer.MembershipType).SingleOrDefault(customerId => customerId.Id == id);
             if (customer == null)
                 return HttpNotFound();
             else

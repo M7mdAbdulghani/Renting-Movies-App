@@ -21,13 +21,31 @@ else
         <thead>
             <tr>
                 <th scope="col">Customer</th>
+                <th scope="col">Discount Rate</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var customer in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id}, null)</td>
+                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                    @*@if (customer.MembershipTypeId == 1)
+                    {
+                        <td>$0</td>
+                    }
+                    else if (customer.MembershipTypeId == 2)
+                    {
+                        <td>$10</td>
+                    }
+                    else if (customer.MembershipTypeId == 3)
+                    {
+                        <td>$15</td>
+                    }
+                    else if (customer.MembershipTypeId == 4)
+                    {
+                        <td>$20</td>
+                    }*@
+                    <td>@customer.MembershipType.Name</td>
                 </tr>
             }
         </tbody>
