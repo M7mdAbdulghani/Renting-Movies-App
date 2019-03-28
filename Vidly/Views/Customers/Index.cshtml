@@ -7,6 +7,10 @@
 
 <h2>Customers</h2>
 
+<a href='@Url.Action("New", "Customers")'>
+    <button class="btn btn-primary">New Customer</button>
+</a>
+
 @*@foreach(var customer in (List<Customer>)ViewBag.Customers)
     {
         <h2>@customer.Name</h2>

@@ -9,7 +9,7 @@ namespace Vidly.Models
     public class Customer
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter customer's name")]
         [StringLength(255)]
         [Display(Name = "Customer Name")]
         public String Name { get; set; }
@@ -17,6 +17,11 @@ namespace Vidly.Models
         public MembershipType MembershipType { get; set; }
         [Display(Name = "Membership Type")]
         public int MembershipTypeId { get; set; }
+        [Min18YearsIfMembership]
         public DateTime ? BirthDate { get; set; }
+
+
+        public static readonly int NotDefined = 0;
+        public static readonly int PayAsYouGo = 1;
     }
 }
