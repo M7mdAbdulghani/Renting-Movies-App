@@ -103,7 +103,6 @@ namespace Vidly.Controllers
         public ActionResult Index()
         {
             var movie = db.Movie.Include(M => M.Genre).ToList();
-           
 
             return View(movie);
         }
@@ -114,6 +113,7 @@ namespace Vidly.Controllers
 
             var viewModel = new NewMovieViewModel()
             {
+                Movie = new Movie(),
                 Genres = genres
             };
             return View(viewModel);
@@ -132,8 +132,19 @@ namespace Vidly.Controllers
             return View("New", viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new NewMovieViewModel()
+                {
+                    Movie = movie,
+                    Genres = db.Genres.ToList()
+                };
+                return View("New", viewModel);
+            }
             var movieInDB = db.Movie.SingleOrDefault(m => m.Id == movie.Id);
 
             if (movieInDB == null)

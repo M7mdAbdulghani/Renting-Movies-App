@@ -225,11 +225,16 @@
     <Compile Include="Migrations\201903270648242_AllowMoviesDateAddedNull.Designer.cs">
       <DependentUpon>201903270648242_AllowMoviesDateAddedNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903291033092_ChangeMovieModel.cs" />
+    <Compile Include="Migrations\201903291033092_ChangeMovieModel.Designer.cs">
+      <DependentUpon>201903291033092_ChangeMovieModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min10IfActionGenre.cs" />
     <Compile Include="Models\Min18YearsIfMembership.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -346,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903270648242_AllowMoviesDateAddedNull.resx">
       <DependentUpon>201903270648242_AllowMoviesDateAddedNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903291033092_ChangeMovieModel.resx">
+      <DependentUpon>201903291033092_ChangeMovieModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,10 +13,12 @@ namespace Vidly.Models
         public String Name { get; set; }
         [Required]
         [Display(Name = "Number in Stock")]
-        public int NumberInStock { get; set; }
+        [Range(1, 20, ErrorMessage = "The field Number in Stock must be between 1 and 20")]
+        [Min10IfActionGenre]
+        public int ? NumberInStock { get; set; }
         [Required]
         [Display(Name = "Release Date")]
-        public DateTime ReleasedDate { get; set; }
+        public DateTime ? ReleasedDate { get; set; }
         public DateTime ? DateAdded { get; set; }
         public Genre Genre { get; set; }
         [Display(Name = "Genre")]
